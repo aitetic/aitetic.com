@@ -24,6 +24,8 @@ TABLE OF CONTENT
 
 @import url('fonts/gilroy/Gilroy.css');
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
 /*-----------------------------------------
   1. General
 -------------------------------------------*/
@@ -38,9 +40,10 @@ TABLE OF CONTENT
 }
 
 body {
-    font-family: "Gilroy", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     overflow-x: hidden;
 }
+
 a {
     transition: 0.3s;
 }
