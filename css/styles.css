@@ -1601,6 +1601,15 @@ footer {
 /*-----------------------------------------
 17. Helpers
 -------------------------------------------*/
+/* Inline code styling */
+.code-inline {
+  background-color: #e9ecef;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #212529;
+  /*font-family: 'Courier New', monospace;*/
+  font-size: 1.0em;
+}
 /*---------------------
 1. Sections
 -----------------------*/
