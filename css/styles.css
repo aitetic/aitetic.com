@@ -273,6 +273,13 @@ header {
   margin-bottom: 10px;
 }
 
+
+@media (max-width: 991px) {
+  .page-title-section h1 {
+    font-size: 32px;
+  }
+}
+
 .page-title-section ul li {
   display: inline-block;
   margin: 0 5px;
@@ -3654,7 +3661,7 @@ footer {
   }
 }
 
-.process-steps-xs li{
+.process-steps-xs li {
   position: relative;
   float: left;
   list-style-type: none;
