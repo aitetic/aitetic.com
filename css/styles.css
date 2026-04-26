@@ -45,6 +45,11 @@ TABLE OF CONTENT
 /*-----------------------------------------
 1. Headings
 -------------------------------------------*/
+
+.text-inherit {
+    color: inherit;
+}
+
 .s-title-sm {
   font-size: 24px;
   font-weight: 600;
@@ -1115,7 +1120,7 @@ header {
 }
 
 .blog-post p {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.7);
   font-size: 16px;
   font-weight: 400;
   line-height: 1.8;

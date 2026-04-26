@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>User Interfaces (UI) for LLMs: a practical Overview</title>
+    <meta name="description" content="Exploring the design and implementation of user interfaces for large language models">
+
+    <meta name="keywords" content="UI for LLMs, AI chat, User interfaces for Large Language Models, Practical overview">
+
+    <meta property="og:title" content="User Interfaces for LLMs: A Practical Overview">
+    <meta property="og:description" content="Exploring the design and implementation of user interfaces for large language models">
+
+
+    <meta name="google-site-verification" content="MCUg1m7fBbGFgcnHiz0u5Wgkmu6W4vbdClvsDqYg6J0" />
+
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" href="img/logo/aitetic-logo-min.svg" type="image/svg+xml">
+
+	<!-- Bootstrap-5.3.8 -->
+	<link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap.min.css">
+	<!-- Font-Awesome -->
+	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+	<!-- Slider -->
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/slider.css">
+	<!--Navigation Menu CSS-->
+	<link rel="stylesheet" type="text/css" href="css/navigation.css">
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+
+
+<!-- Navbar START -->
+<header id="nav-transparent">
+	<div>
+		<nav id="navigation4" class="container navigation">
+			<div class="nav-header">
+				<a class="nav-brand" href="/">
+					<img src="img/logo/aitetic-logo.svg" alt="logo" class="main-logo" id="light_logo" title="aitetic">
+					<img src="img/logo/aitetic-logo-inversed.svg" alt="logo" class="main-logo" id="main_logo" title="aitetic">
+				</a>
+				<div class="nav-toggle"></div>
+			</div>
+			<div class="nav-menus-wrapper">
+				<ul class="nav-menu align-to-right">
+					<li><a href="#">Home</a>
+						<ul class="nav-dropdown">
+							<li><a href="/">Features</a></li>
+						</ul>
+					</li>
+                	<li><a href="blog.html" class="nav-link">ML Blog</a></li>
+					<li><a href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">
+						<svg xmlns="http://www.w3.org/2000/svg" class="me-2 align-middle" viewBox="0 0 512 499.36" role="img" height="16" width="16" aria-label="GitHub icon">
+                    	<path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                      	</path>
+                    </svg>GitHub</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</header>
+<!-- Navbar END -->
+
+<!-- Page Title START -->
+<div class="page-title-section">
+	<div class="black-overlay-70"></div>
+	<div class="container">
+		<h1>User Interfaces for LLMs: A Practical Overview</h1>
+	</div>
+</div>
+<!-- Page Title END -->
+
+<!-- Blog Post START -->
+<div class="section-wrapper">
+	<div class="container">
+
+		<div class="blog-post pr-lg-4 pr-0">
+			<img src="images/ui-for-llms-overview.png" alt="img" class="mb-15">
+			<ul class="blog-post-info ps-0">
+				<li><i class="far fa-user"></i><span title="Aitetic">Aitetic</span></li>
+				<li><i class="far fa-calendar-alt"></i><span>April 26, 2026</span></li>
+			</ul>
+
+<p>Open-source user interfaces for Large Language Models have become an important part of the modern AI stack. They are no longer just simple chat windows. Today, an LLM interface can be a local model launcher, a RAG workspace, an agent builder, a document assistant, a testing console, or even the frontend layer of a production AI product.</p>
+
+<p>For developers, researchers, small teams, and companies experimenting with private AI infrastructure, these tools solve a practical problem: they make LLMs usable without forcing every project to start from a blank frontend, authentication system, chat history database, file upload pipeline, or API integration layer.</p>
+
+<p>Some interfaces are designed for quick prototyping. Others are closer to full AI workspaces. Some focus on local models through Ollama, llama.cpp, or text-generation backends. Others connect many cloud providers behind a single frontend. A few are better understood not as “chat UIs” but as low-code orchestration environments for RAG and agents.</p>
+
+<p>Below is a practical overview of the most useful open-source or source-available <strong>LLM interfaces</strong>, starting with <strong>Gradio</strong>, which deserves a special place because of how fast it lets developers turn a model, <strong>API</strong>, or Python function into a <strong>usable web</strong> application.</p>
+
+
+<h2 class="fw-bold mt-5" style="font-size: 26px;">1. Gradio</h2>
+
+<p><strong>Best for</strong> rapid AI demos, internal tools, model testing, research prototypes, small custom LLM apps.</p>
+
+<p>Gradio is one of the fastest ways to build a working user interface around a machine learning model or LLM pipeline. Instead of creating a frontend with React, Vue, or Svelte, a developer can write a few lines of Python and expose a model through a browser-based interface. The official Gradio description focuses exactly on this: building machine learning apps in Python and sharing or deploying them quickly.</p>
+
+<p>For LLM work, Gradio is especially useful because it provides ready-made components such as <code class="code-inline">ChatInterface</code>, <code class="code-inline">Chatbot</code>, text boxes, file uploaders, sliders, dropdowns, audio inputs, image inputs, galleries, and dataframes. The <code class="code-inline">Chatbot</code> component supports formatted chat messages and can display text, Markdown-like formatting, images, audio, video, and files.</p>
+
+<p>Technically, Gradio is not only a “demo tool.” It can become a lightweight application layer around:</p>
+
+<ul class="article-list">
+	<li>local Hugging Face Transformers models;</li>
+	<li>llama.cpp or Ollama endpoints;</li>
+	<li>OpenAI-compatible APIs;</li>
+	<li>custom RAG pipelines;</li>
+	<li>document loaders and embedding search;</li>
+	<li>multimodal models;</li>
+	<li>classification, summarization, translation, and tool-calling experiments.</li>
+</ul>
+
+<p>A typical Gradio LLM app may contain a Python function that receives the user message and chat history, sends the prompt to a model backend, streams or returns the response, and updates the UI. For more control, developers can use Blocks, which allows building custom layouts with multiple inputs, tabs, buttons, state objects, and event handlers.</p>
+
+<p>Gradio is especially strong when the developer wants to test an idea before building a full product. For example, if you are training a small language model, fine-tuning a GPT-style model, testing a RAG pipeline, or comparing prompts, Gradio can become a convenient browser UI almost immediately.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>pure Python development flow;</li>
+	<li>no frontend framework required;</li>
+	<li>fast chatbot creation with <code class="code-inline">gr.ChatInterface()</code>;</li>
+	<li>supports multimodal inputs and outputs;</li>
+
+	<li>useful for model demos, evaluation tools, and internal dashboards;</li>
+	<li>can be deployed locally, on a server, or through hosted environments;</li>
+	<li>good fit for custom pipelines where the model logic is already in Python.</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>Gradio is not a full multi-user ChatGPT clone by default. 
+	It does not automatically provide advanced user management, long-term conversation storage, team workspaces, document permissions, or enterprise-style admin controls. 
+	Those can be added, but if the goal is a complete self-hosted AI workspace, tools like Open WebUI, LibreChat, or AnythingLLM may be more ready out of the box.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/gradio-app/gradio" target="_blank" rel="noopener noreferrer">https://github.com/gradio-app/gradio</a>
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">2. Open WebUI</h2>
+
+<p><strong>Best for:</strong> self-hosted ChatGPT-like experience, Ollama users, local/cloud model switching, private AI chat.</p>
+
+<p>Open WebUI is one of the most popular self-hosted interfaces for interacting with local and cloud-based LLMs. 
+	It is designed to work offline and supports Ollama as well as OpenAI-compatible APIs, making it useful for both private local setups and provider-agnostic deployments.</p>
+
+<p>From a technical perspective, Open WebUI is attractive because it gives users a complete AI chat environment without requiring them to build frontend, backend, chat history, model selection, or file interaction from scratch. 
+	Its documentation describes support for conversations, model switching, file attachments, web search, code execution, and tool usage from the same interface.</p>
+
+<p>Open WebUI is often used with Ollama because Ollama makes local model serving simple, while Open WebUI provides the browser experience on top of it. 
+	This combination is practical for users running models like Llama, Qwen, Mistral, Gemma, Phi, or small custom models locally.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>strong Ollama integration;</li>
+	<li>OpenAI-compatible provider support;</li>
+	<li>self-hosted deployment;</li>
+	<li>user-friendly ChatGPT-like interface;</li>
+	<li>local models and private AI environments;</li>
+	<li>file-based and tool-based workflows;</li>
+	<li>non-developers who still want local AI.</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>Open WebUI is more of a complete application than a small framework. If you want to deeply customize the UX or embed the chat UI into your own product, a React component library such as assistant-ui may be easier to adapt. Also, licensing and “open-source” status should be checked carefully for any project before commercial use.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener noreferrer">https://github.com/open-webui/open-webui</a>
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">3. LibreChat</h2>
+
+<p><strong>Best for</strong> multi-provider self-hosted <strong>AI chat</strong>, agents, MCP, enterprise-like chat workflows.</p>
+
+<p>LibreChat is a self-hosted AI chat platform focused on unifying multiple model providers in one interface. Its GitHub description highlights support for AI agents, Model Context Protocol, artifacts, code interpreter, custom actions, conversation search, and multi-user authentication.</p>
+
+<p>LibreChat is technically interesting because it is closer to a full AI application platform than a simple frontend. It can connect to different providers, organize conversations, support more advanced assistant workflows, and expose configuration through files such as librechat.yaml. The documentation notes that this configuration can define custom AI endpoints, model settings, interface options, MCP servers, and agent-related features.</p>
+
+<p>The MCP support is especially important for modern agentic systems. LibreChat can use MCP servers either in the chat area or with agents, allowing the assistant to interact with external tools through a standardized protocol.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>multi-provider support;</li>
+	<li>self-hosted architecture;</li>
+	<li>agents and MCP support;</li>
+	<li>configurable endpoints;</li>
+	<li>useful for teams and advanced users;</li>
+	<li>closer to a real ChatGPT alternative than a small demo app;</li>
+	<li>supports more structured AI workflows.</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>LibreChat is more complex than Gradio or Streamlit. It is better suited for users who actually need multi-user features, provider routing, agents, or advanced configuration. 
+For a simple one-model demo, it can be more infrastructure than necessary. Also, as with any open-source project, the license and commercial use terms should be reviewed before using it in a product.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/danny-avila/LibreChat" target="_blank" rel="noopener noreferrer">https://github.com/danny-avila/LibreChat</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">4. AnythingLLM</h2>
+
+<p><strong>Best for</strong>: private document chat, RAG workspaces, no-code AI knowledge bases.</p>
+
+<p>AnythingLLM is an all-in-one AI application for chatting with documents, building RAG workspaces, and using agents without needing to assemble every infrastructure piece manually. Its documentation describes it as an application for RAG, AI agents, and related workflows, while the GitHub overview emphasizes local/cloud LLM connections, document ingestion, vector databases, multi-user support, and document pipelines.</p>
+
+<p>The main technical idea behind AnythingLLM is that a user can create workspaces, upload documents, embed them into a vector database, and then chat with those documents using a selected LLM. This is useful for internal documentation, project notes, manuals, PDFs, support knowledge bases, research collections, and company-specific assistants.</p>
+
+<p>AnythingLLM supports multiple vector database options, and the documentation warns that changing vector databases later may require re-embedding documents. That detail matters because RAG systems are not just UI projects: they depend on embeddings, chunking, vector storage, retrieval strategy, and re-indexing workflows.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>RAG/document-chat focus;</li>
+	<li>built-in document ingestion;</li>
+	<li>vector database support;</li>
+	<li>multi-user support;</li>
+	<li>local and cloud model compatibility;</li>
+	<li>useful for private knowledge bases;</li>
+	<li>less coding required than building RAG manually.</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>AnythingLLM is excellent when document chat is the core use case. If the goal is low-level model experimentation, custom training evaluation, or a highly customized frontend, Gradio, Streamlit, or assistant-ui may offer more flexibility.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/Mintplex-Labs/anything-llm" target="_blank" rel="noopener noreferrer">https://github.com/Mintplex-Labs/anything-llm</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">5. LobeChat</h2>
+
+<p><strong>Best for</strong>: polished AI chat UI, multi-provider chat, multimodal workflows, plugin-oriented user experience.</p>
+
+<p>LobeChat is a modern AI chat interface with a polished design and broad provider support. It is often positioned as a full-featured ChatGPT-like frontend with support for different LLM providers, local models, plugins, and multimodal interactions. Its GitHub page mentions multimodal capabilities such as visual recognition support, where users can upload images and interact with models that understand visual content.</p>
+
+<p>The strength of LobeChat is the frontend experience. It looks and feels closer to a polished consumer AI application than a basic developer demo. That makes it attractive for users who care about design, usability, and a clean conversational interface.</p>
+
+<p>Technically, LobeChat can fit well when a team wants a ready-made AI chat experience with provider switching and extensibility. It is less about building arbitrary Python pipelines and more about providing a high-quality user interface around modern model providers.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>polished modern UI;</li>
+	<li>multi-provider orientation;</li>
+	<li>multimodal support;</li>
+	<li>plugin ecosystem;</li>
+	<li>good for self-hosted AI chat experiences;</li>
+	<li>strong UX for everyday users.</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>For deeply custom backend logic, model training tools, or Python-first experimentation, LobeChat may be less direct than Gradio or Streamlit. Before using it commercially, check the project’s current license and deployment terms.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/lobehub/lobe-chat" target="_blank" rel="noopener noreferrer">https://github.com/lobehub/lobe-chat</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">6. Text Generation Web UI / oobabooga</h2>
+
+<p><strong>Best for</strong>: local model experimentation, prompt testing, model loading options, research and hobbyist workflows.</p>
+
+<p>Text Generation Web UI, often known as oobabooga, is one of the classic local LLM interfaces. It is popular among users who want to run models locally, test different prompt formats, use character/chat modes, and experiment with model loading backends.</p>
+
+<p>The project supports chat and instruct modes, Jinja2 prompt templates, multimodal attachments, file attachments, message editing, conversation branching, and notebook-style text generation outside normal chat turns.</p>
+
+<p>This makes it useful for people who want more control over generation settings than typical polished chat products provide. Parameters such as temperature, top-p, top-k, repetition penalty, prompt templates, context length, and model loader choices are often important during local model testing.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>strong local model experimentation;</li>
+	<li>supports many generation settings;</li>
+	<li>useful prompt/template control;</li>
+	<li>extension ecosystem;</li>
+	<li>chat, instruct, and notebook-style modes;</li>
+	<li>good for testing quantized and local models;</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>It is more technical and less product-like than Open WebUI or LobeChat. It is great for experimentation, but not always the first choice for a clean team-facing AI assistant.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit"href="https://github.com/oobabooga/text-generation-webui" target="_blank" rel="noopener noreferrer">https://github.com/oobabooga/text-generation-webui</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">7. Chatbot UI</h2>
+
+<p><strong>Best for</strong>: developers who want a ChatGPT-style frontend starter.</p>
+
+<p>Chatbot UI is a frontend-oriented project for building an AI chat experience. It is useful when the goal is not necessarily to run local models directly, but to start from an existing chat application structure and adapt it.</p>
+
+<p>The GitHub repository provides local quickstart instructions, and the project is commonly associated with a modern web stack rather than a Python-first workflow.</p>
+
+<p>This kind of tool is valuable when you want to build your own AI product but do not want to design the entire chat interface from zero. It can serve as a starting point for chat history, message layout, model selection, API calls, and user experience patterns.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>good frontend starter;</li>
+	<li>useful for custom AI products;</li>
+	<li>web-app oriented architecture;</li>
+	<li>easier to customize visually than full platforms;</li>
+	<li>suitable for OpenAI-compatible or custom API backends;</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>Chatbot UI is more of a starting point than a complete AI platform. You may need to implement or adapt authentication, billing, storage, RAG, tools, model routing, and deployment details depending on your use case.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/mckaywrigley/chatbot-ui" target="_blank" rel="noopener noreferrer">https://github.com/mckaywrigley/chatbot-ui</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">8. Flowise</h2>
+
+<p><strong>Best for</strong>: visual LLM workflows, RAG pipelines, agents, low-code orchestration.</p>
+
+<p>Flowise is different from a normal chat UI. It is a visual development platform for building LLM applications, chatflows, assistants, and agent workflows. Its documentation describes it as an open-source generative AI development platform with a visual builder, tracing and analytics, evaluations, human-in-the-loop features, API/CLI/SDK support, and embedded chatbot options.</p>
+
+<p>Flowise is useful when the key problem is not “how do I chat with a model?” but “how do I connect a model, tools, prompts, memory, retrievers, APIs, and decision logic into a workflow?” It can be used to create RAG systems, agentic pipelines, and chatbot backends that are later embedded into other applications.</p>
+
+<p>Flowise documentation also includes tutorials for RAG and agentic RAG, where retrieval is combined with more advanced logic such as query regeneration, relevance checking, and self-correction.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>visual workflow builder;</li>
+	<li>RAG and agent support;</li>
+	<li>API and embedded chatbot options;</li>
+	<li>good for non-trivial LLM applications;</li>
+	<li>useful for prototyping chains and workflows;</li>
+	<li>can reduce boilerplate for orchestration;</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>Because Flowise can execute complex workflows and integrate external tools, deployment security matters. As with any publicly exposed low-code automation platform, it should be kept updated, protected behind authentication, and not casually exposed to the public internet.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/FlowiseAI/Flowise" target="_blank" rel="noopener noreferrer">https://github.com/FlowiseAI/Flowise</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">9. LangFlow</h2>
+
+<p><strong>Best for</strong>: visual AI application development, RAG, agents, MCP, Python-based customization.</p>
+
+<p>LangFlow is another visual framework for building AI applications. Its documentation describes it as an open-source, Python-based, customizable framework that supports agents, MCP, and different LLMs and vector stores without forcing one specific provider.</p>
+
+<p>LangFlow is useful for building RAG pipelines, agent workflows, and AI applications through a visual editor. It sits somewhere between a developer framework and a low-code environment. The visual interface helps with prototyping, while the Python-based architecture gives developers room to customize.</p>
+
+<p>The official site also emphasizes building and deploying AI agents and MCP servers, with support for major LLMs, vector databases, and AI tools.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>visual workflow design;</li>
+	<li>Python-based customization;</li>
+	<li>LLM and vector-store agnostic;</li>
+	<li>supports agents and MCP;</li>
+	<li>good for RAG and multi-agent prototypes;</li>
+	<li>useful bridge between no-code and code;</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>Like Flowise, LangFlow is most valuable when you need workflows, not just a chat box. If all you need is a simple interface for one model, it may be more complex than necessary.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/logspace-ai/langflow" target="_blank" rel="noopener noreferrer">https://github.com/logspace-ai/langflow</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">10. assistant-ui</h2>
+
+<p><strong>Best for:</strong> building production-grade AI chat interfaces inside React/Next.js apps.</p>
+
+<p>assistant-ui is not a full AI platform. It is a TypeScript/React library for building AI chat interfaces. Its documentation describes it as a way to create enterprise-grade AI chat interfaces for React, React Native, and terminal applications.</p>
+
+<p>This makes assistant-ui very different from tools like Open WebUI or AnythingLLM. Instead of giving you a complete app, it gives you frontend primitives and state management for chat experiences. Its GitHub description highlights production-grade AI chat UX, streaming, auto-scrolling, accessibility, and related frontend behavior.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>React/TypeScript focused;</li>
+	<li>good for custom products;</li>
+	<li>supports production-style chat UX;</li>
+	<li>useful for streaming responses;</li>
+	<li>composable frontend primitives;</li>
+	<li>better fit for app developers than no-code users.</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>assistant-ui does not solve the whole backend. You still need model serving, API routes, authentication, database storage, RAG, tools, and deployment logic.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/assistant-ui/assistant-ui" target="_blank" rel="noopener noreferrer">https://github.com/assistant-ui/assistant-ui</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">11. Streamlit</h2>
+
+<p><strong>Best for:</strong> Python dashboards, LLM prototypes, internal evaluation tools, simple chat apps.</p>
+
+<p>Streamlit is another Python-first tool that works very well for LLM apps. It is often used for dashboards, data apps, and internal tools, but its chat elements make it practical for conversational AI prototypes too.</p>
+
+<p>The official Streamlit documentation includes <code class="code-inline">st.chat_input</code> and <code class="code-inline">st.chat_message</code>, which are designed for building conversational apps and chat interfaces. Chat containers can include text, charts, tables, and other Streamlit elements, which makes Streamlit useful when the LLM output is part of a larger analytical workflow.</p>
+
+<p>Compared with Gradio, Streamlit often feels more like an app/dashboard framework. It is excellent when you want to combine an LLM with dataframes, plots, filters, file upload, evaluation metrics, logs, or admin controls.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>Python-first development;</li>
+	<li>good for dashboards and AI tools;</li>
+	<li>built-in chat components;</li>
+	<li>easy integration with data science workflows;</li>
+	<li>useful for evaluation and annotation interfaces;</li>
+	<li>fast internal deployment.</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>Streamlit is not primarily a polished ChatGPT clone. It is better for internal tools, prototypes, dashboards, and developer-facing AI applications.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/streamlit/streamlit" target="_blank" rel="noopener noreferrer">https://github.com/streamlit/streamlit</a>
+
+
+
+<hr>
+<h2 class="fw-bold mt-5" style="font-size: 26px;">Choosing the Right UI</h2>
+
+<p>The best LLM interface depends on what you are building.</p>
+
+<p>For <strong>fast Python prototypes</strong>, choose <strong>Gradio</strong> or <strong>Streamlit</strong>.</p>
+
+<p>For <strong>local private AI chat</strong>, choose <strong>Open WebUI</strong>.</p>
+
+<p>For <strong>multi-provider self-hosted ChatGPT-like workflows</strong>, choose <strong>LibreChat</strong>.</p>
+
+<p>For <strong>document chat and RAG workspaces</strong>, choose <strong>AnythingLLM</strong>.</p>
+
+<p>For <strong>polished self-hosted AI chat</strong>, choose <strong>LobeChat</strong>.</p>
+
+<p>For <strong>local model experimentation</strong>, choose <strong>Text Generation Web UI / oobabooga</strong>.</p>
+
+<p>For <strong>custom React/Next.js AI products</strong>, choose <strong>assistant-ui</strong> or <strong>Chatbot UI</strong>.</p>
+
+<p>For <strong>visual RAG and agent workflows</strong>, choose <strong>Flowise</strong> or <strong>LangFlow</strong>.</p>
+
+
+<h2 class="fw-bold mt-5" style="font-size: 26px;">Final Thoughts</h2>
+
+<p>The open-source LLM UI ecosystem is becoming more specialized. A few years ago, most tools were simple wrappers around a text generation endpoint. Now the space includes Python demo frameworks, self-hosted ChatGPT alternatives, RAG workspaces, visual agent builders, React component libraries, and local model laboratories.</p>
+
+<p>That is good news for developers. It means you no longer need to build every layer manually. You can choose the right abstraction level:</p>
+
+<ul class="article-list">
+	<li>use <strong>Gradio</strong> when you want to expose a model quickly;</li>
+	<li>use <strong>Open WebUI</strong> when you want a private local AI assistant;</li>
+	<li>use <strong>LibreChat</strong> when you need a full multi-provider chat platform;</li>
+	<li>use <strong>AnythingLLM</strong> when your main problem is document knowledge;</li>
+	<li>use <strong>Flowise</strong> or <strong>LangFlow</strong> when you need visual orchestration;</li>
+	<li>use <strong>assistant-ui</strong> when you are building your own production frontend.</li>
+</ul>
+
+<p>For small language models, local inference, embedded AI experiments, and private deployments, these interfaces are especially valuable. They turn raw model endpoints into usable systems — and in real projects, that usability layer is often what makes the difference between an interesting model and a working AI product.</p>
+
+		</div>
+	</div>
+</div>
+
+<!-- Blog Post END -->
+
+
+
+<!-- Footer START -->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-4 foot-col-1">
+				<img src="img/logo/aitetic-logo.svg" alt="logo" style="width: 120px; height: auto;" title="aitetic">
+				<p class="s-mrt-40">AI solutions development, LLM-models research for applied AI solutions.</p>
+				<ul class="social-footer">
+					<li class="shadow">
+						<a href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">
+							<i class="fab fa-github iconhover" title="aitetic github"></i>
+						</a>
+					</li>
+					<li class="shadow">
+						<a href="https://huggingface.co/aitetic" target="_blank" rel="noopener noreferrer" title="aitetic HuggingFace">
+							<img src="img/content/huggingface_logo-noborder.svg" class="iconhover" alt="Hugging Face" width="20" height="20">
+						</a>
+					</li>
+					<li class="shadow">
+						<a href="https://www.facebook.com/aitetic" target="_blank" rel="noopener noreferrer">
+							<i class="fab fa-facebook-f iconhover" title="aitetic Facebook"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-2 footer-col-clone">
+				<h3>OUR SERVICES</h3>
+				<ul class="px-0">
+					<li><a href="#">Business AI solutions</a>
+					</li>
+					<li><a href="#">Our mission</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-3 footer-col-clone">
+				<h3>OUR SERVICES</h3>
+				<ul class="px-0">
+					<li><a href="#">Business Consultation</a>
+					</li>
+					<li><a href="#">Motivation and Evaluation</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-12 foot-bottom">
+              <p>Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> Aitetic. All rights reserved.
+              </p>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Footer END -->
+
+<!-- Jquery -->
+<script src="./js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="./js/bootstrap.min.js"></script>
+<!-- Navbar JS -->
+<script src="./js/navigation.js"></script>
+<script src="./js/navigation.fixed.js"></script>
+<!-- Popper -->
+<script src="./js/popper.min.js"></script>
+<!-- Include js plugin -->
+<script src="./js/owl.carousel.min.js"></script>
+<!-- Main JS -->
+<script src="./js/main.js"></script>
+</body>
+
+</html>
