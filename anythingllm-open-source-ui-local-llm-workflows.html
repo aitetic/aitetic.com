@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>AnythingLLM: An Open-Source UI for Local LLM Workflows</title>
+    <meta name="description" content="AnythingLLM: An Open-Source UI for Local LLM Workflows: details and overview of the LLM interface for RAG and document chat">
+
+    <meta name="keywords" content="AnythingLLM, Web-UI, UI for LLMs, AnythingLLM AI chat, User interfaces for Large Language Models">
+
+    <meta property="og:title" content="AnythingLLM: An Open-Source UI for Local LLM Workflows">
+    <meta property="og:description" content="AnythingLLM: An Open-Source UI for Local LLM Workflows: details and overview of the LLM interface for RAG and document chat">
+
+
+    <meta name="google-site-verification" content="MCUg1m7fBbGFgcnHiz0u5Wgkmu6W4vbdClvsDqYg6J0" />
+
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" href="img/logo/aitetic-logo-min.svg" type="image/svg+xml">
+
+	<!-- Bootstrap-5.3.8 -->
+	<link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap.min.css">
+	<!-- Font-Awesome -->
+	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+	<!-- Slider -->
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/slider.css">
+	<!--Navigation Menu CSS-->
+	<link rel="stylesheet" type="text/css" href="css/navigation.css">
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+
+
+<!-- Navbar START -->
+<header id="nav-transparent">
+	<div>
+		<nav id="navigation4" class="container navigation">
+			<div class="nav-header">
+				<a class="nav-brand" href="/">
+					<img src="img/logo/aitetic-logo.svg" alt="logo" class="main-logo" id="light_logo" title="aitetic">
+					<img src="img/logo/aitetic-logo-inversed.svg" alt="logo" class="main-logo" id="main_logo" title="aitetic">
+				</a>
+				<div class="nav-toggle"></div>
+			</div>
+			<div class="nav-menus-wrapper">
+				<ul class="nav-menu align-to-right">
+					<li><a href="#">Home</a>
+						<ul class="nav-dropdown">
+							<li><a href="/">Features</a></li>
+						</ul>
+					</li>
+                	<li><a href="blog.html" class="nav-link">ML Blog</a></li>
+					<li><a href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">
+						<svg xmlns="http://www.w3.org/2000/svg" class="me-2 align-middle" viewBox="0 0 512 499.36" role="img" height="16" width="16" aria-label="GitHub icon">
+                    	<path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                      	</path>
+                    </svg>GitHub</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</header>
+<!-- Navbar END -->
+
+<!-- Page Title START -->
+<div class="page-title-section">
+	<div class="black-overlay-70"></div>
+	<div class="container">
+		<h1>AnythingLLM: An Open-Source UI for Local LLM Workflows</h1>
+	</div>
+</div>
+<!-- Page Title END -->
+
+<!-- Blog Post START -->
+<div class="section-wrapper">
+	<div class="container">
+
+		<div class="blog-post pr-lg-4 pr-0">
+			<img src="images/anythingllm-ui-llm.png" alt="img" class="mb-15">
+			<ul class="blog-post-info ps-0">
+				<li><i class="far fa-user"></i><span title="Aitetic">Aitetic</span></li>
+				<li><i class="far fa-calendar-alt"></i><span>April 28, 2026</span></li>
+			</ul>
+
+<p>Open-source user interfaces for Large Language Models have become an important part of the modern AI stack. They are no longer just simple chat windows. Today, an LLM interface can be a local model launcher, a RAG workspace, an agent builder, a document assistant, a testing console, or even the frontend layer of a production AI product.</p>
+
+<p>For developers, researchers, small teams, and companies experimenting with private AI infrastructure, these tools solve a practical problem: they make LLMs usable without forcing every project to start from a blank frontend, authentication system, chat history database, file upload pipeline, or API integration layer.</p>
+
+<p>Some interfaces are designed for quick prototyping. Others are closer to full AI workspaces. Some focus on local models through Ollama, llama.cpp, or text-generation backends. Others connect many cloud providers behind a single frontend. A few are better understood not as “chat UIs” but as low-code orchestration environments for RAG and agents.</p>
+
+<p>Below is a practical overview of the most useful open-source or source-available <strong>LLM interfaces</strong>, starting with <strong>Gradio</strong>, which deserves a special place because of how fast it lets developers turn a model, <strong>API</strong>, or Python function into a <strong>usable web</strong> application.</p>
+
+
+<h2 class="fw-bold mt-5" style="font-size: 26px;">1. Gradio</h2>
+
+<p><strong>Best for</strong> rapid AI demos, internal tools, model testing, research prototypes, small custom LLM apps.</p>
+
+<p>Gradio is one of the fastest ways to build a working user interface around a machine learning model or LLM pipeline. Instead of creating a frontend with React, Vue, or Svelte, a developer can write a few lines of Python and expose a model through a browser-based interface. The official Gradio description focuses exactly on this: building machine learning apps in Python and sharing or deploying them quickly.</p>
+
+<p>For LLM work, Gradio is especially useful because it provides ready-made components such as <code class="code-inline">ChatInterface</code>, <code class="code-inline">Chatbot</code>, text boxes, file uploaders, sliders, dropdowns, audio inputs, image inputs, galleries, and dataframes. The <code class="code-inline">Chatbot</code> component supports formatted chat messages and can display text, Markdown-like formatting, images, audio, video, and files.</p>
+
+<p>Technically, Gradio is not only a “demo tool.” It can become a lightweight application layer around:</p>
+
+<ul class="article-list">
+	<li>local Hugging Face Transformers models;</li>
+	<li>llama.cpp or Ollama endpoints;</li>
+	<li>OpenAI-compatible APIs;</li>
+	<li>custom RAG pipelines;</li>
+	<li>document loaders and embedding search;</li>
+	<li>multimodal models;</li>
+	<li>classification, summarization, translation, and tool-calling experiments.</li>
+</ul>
+
+<p>A typical Gradio LLM app may contain a Python function that receives the user message and chat history, sends the prompt to a model backend, streams or returns the response, and updates the UI. For more control, developers can use Blocks, which allows building custom layouts with multiple inputs, tabs, buttons, state objects, and event handlers.</p>
+
+<p>Gradio is especially strong when the developer wants to test an idea before building a full product. For example, if you are training a small language model, fine-tuning a GPT-style model, testing a RAG pipeline, or comparing prompts, Gradio can become a convenient browser UI almost immediately.</p>
+
+<p><strong>Technical strengths:</strong></p>
+
+<ul class="article-list">
+	<li>pure Python development flow;</li>
+	<li>no frontend framework required;</li>
+	<li>fast chatbot creation with <code class="code-inline">gr.ChatInterface()</code>;</li>
+	<li>supports multimodal inputs and outputs;</li>
+
+	<li>useful for model demos, evaluation tools, and internal dashboards;</li>
+	<li>can be deployed locally, on a server, or through hosted environments;</li>
+	<li>good fit for custom pipelines where the model logic is already in Python.</li>
+</ul>
+
+<p><strong>Limitations:</strong></p>
+
+<p>Gradio is not a full multi-user ChatGPT clone by default. 
+	It does not automatically provide advanced user management, long-term conversation storage, team workspaces, document permissions, or enterprise-style admin controls. 
+	Those can be added, but if the goal is a complete self-hosted AI workspace, tools like Open WebUI, LibreChat, or AnythingLLM may be more ready out of the box.</p>
+
+<strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/gradio-app/gradio" target="_blank" rel="noopener noreferrer">https://github.com/gradio-app/gradio</a>
+
+
+
+		</div>
+	</div>
+</div>
+
+<!-- Blog Post END -->
+
+
+
+<!-- Footer START -->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-4 foot-col-1">
+				<img src="img/logo/aitetic-logo.svg" alt="logo" style="width: 120px; height: auto;" title="aitetic">
+				<p class="s-mrt-40">AI solutions development, LLM-models research for applied AI solutions.</p>
+				<ul class="social-footer">
+					<li class="shadow">
+						<a href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">
+							<i class="fab fa-github iconhover" title="aitetic github"></i>
+						</a>
+					</li>
+					<li class="shadow">
+						<a href="https://huggingface.co/aitetic" target="_blank" rel="noopener noreferrer" title="aitetic HuggingFace">
+							<img src="img/content/huggingface_logo-noborder.svg" class="iconhover" alt="Hugging Face" width="20" height="20">
+						</a>
+					</li>
+					<li class="shadow">
+						<a href="https://www.facebook.com/aitetic" target="_blank" rel="noopener noreferrer">
+							<i class="fab fa-facebook-f iconhover" title="aitetic Facebook"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-2 footer-col-clone">
+				<h3>OUR SERVICES</h3>
+				<ul class="px-0">
+					<li><a href="#">Business AI solutions</a>
+					</li>
+					<li><a href="#">Our mission</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-3 footer-col-clone">
+				<h3>OUR SERVICES</h3>
+				<ul class="px-0">
+					<li><a href="#">Business Consultation</a>
+					</li>
+					<li><a href="#">Motivation and Evaluation</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-12 foot-bottom">
+              <p>Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> Aitetic. All rights reserved.
+              </p>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Footer END -->
+
+<!-- Jquery -->
+<script src="./js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="./js/bootstrap.min.js"></script>
+<!-- Navbar JS -->
+<script src="./js/navigation.js"></script>
+<script src="./js/navigation.fixed.js"></script>
+<!-- Popper -->
+<script src="./js/popper.min.js"></script>
+<!-- Include js plugin -->
+<script src="./js/owl.carousel.min.js"></script>
+<!-- Main JS -->
+<script src="./js/main.js"></script>
+</body>
+
+</html>
