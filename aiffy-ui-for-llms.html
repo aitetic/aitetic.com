@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>aiffy - ui for llms</title>
+    <meta name="description" content="Introducing aiffy, a UI shell for local LLMs with a polished chat-first interface.">
+
+    <meta name="keywords" content="aiffy, UI for LLMs, local LLM UI, chat interface, open source UI">
+
+    <meta property="og:title" content="aiffy - ui for llms">
+    <meta property="og:description" content="Introducing aiffy, a UI shell for local LLMs with a polished chat-first interface.">
+
+    <meta name="google-site-verification" content="MCUg1m7fBbGFgcnHiz0u5Wgkmu6W4vbdClvsDqYg6J0" />
+
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" href="img/logo/aitetic-logo-min.svg" type="image/svg+xml">
+
+    <!-- Bootstrap-5.3.8 -->
+    <link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap.min.css">
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+    <!-- Slider -->
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/slider.css">
+    <!--Navigation Menu CSS-->
+    <link rel="stylesheet" type="text/css" href="css/navigation.css">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+
+
+<!-- Navbar START -->
+<header id="nav-transparent">
+    <div>
+        <nav id="navigation4" class="container navigation">
+            <div class="nav-header">
+                <a class="nav-brand" href="/">
+                    <img src="img/logo/aitetic-logo.svg" alt="logo" class="main-logo" id="light_logo" title="aitetic">
+                    <img src="img/logo/aitetic-logo-inversed.svg" alt="logo" class="main-logo" id="main_logo" title="aitetic">
+                </a>
+                <div class="nav-toggle"></div>
+            </div>
+            <div class="nav-menus-wrapper">
+                <ul class="nav-menu align-to-right">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="#">Articles</a>
+                        <ul class="nav-dropdown">
+                            <li><a href="/blog.html">ML Blog</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="me-2 align-middle" viewBox="0 0 512 499.36" role="img" height="16" width="16" aria-label="GitHub icon">
+                            <path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z"></path>
+                        </svg>GitHub</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Navbar END -->
+
+<!-- Page Title START -->
+<div class="page-title-section">
+    <div class="black-overlay-70"></div>
+    <div class="container">
+        <h1>aiffy - ui for llms</h1>
+        <p>aiffy is the UI shell for a local LLM web interface, built for fast chat interaction and practical model tooling.</p>
+    </div>
+</div>
+<!-- Page Title END -->
+
+<!-- Blog Post START -->
+<div class="section-wrapper">
+    <div class="container">
+
+        <div class="blog-post pr-lg-4 pr-0">
+            <img src="images/ui-for-llms-overview-small.png" alt="aiffy UI for LLMs" class="mb-15">
+            <ul class="blog-post-info ps-0">
+                <li><i class="far fa-user"></i><span title="Aitetic">Aitetic</span></li>
+                <li><i class="far fa-calendar-alt"></i><span>May 7, 2026</span></li>
+            </ul>
+
+            <p><strong>aiffy</strong> is a lightweight UI shell for local LLMs that builds on a modern Svelte-based frontend and a local model-serving backend. It is designed for developers and AI practitioners who want a clean chat-first interface without cloud dependencies.</p>
+
+            <p>The main goals of aiffy are:</p>
+            <ul class="article-list">
+                <li>Provide a simple chat interface for local LLMs.</li>
+                <li>Offer theme controls and accessible appearance options.</li>
+                <li>Integrate directly with local model servers and tooling.</li>
+                <li>Make prompt testing and conversation workflows fast and intuitive.</li>
+            </ul>
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Why aiffy matters</h2>
+
+            <p>Local LLM UI shells are essential when you want to experiment with models on your own hardware. aiffy combines the responsiveness of a browser-based interface with the flexibility to run custom models and tools locally.</p>
+
+            <p>Unlike generic frontend demos, aiffy is built specifically for LLM workflows. It includes chat history support, message rendering, settings panels, and a design that scales from quick prototype queries to longer, multi-turn conversations.</p>
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Key characteristics</h2>
+
+            <p><strong>Local-first</strong>: aiffy runs against local model backends and prioritizes privacy and offline capability.</p>
+            <p><strong>Theme-aware</strong>: it supports multiple UI themes, including dark, light, system, and KDE-style mode.</p>
+            <p><strong>Tool-friendly</strong>: the shell is designed to work with model tooling such as prompt templates, built-in utilities, and server-backed features.</p>
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">How to use it</h2>
+
+            <p>To use aiffy, run the repository's Python server and open the web UI in your browser. The backend serves the local model and the frontend provides the chat interface, settings, and built-in option panels.</p>
+
+            <p>The UI is based on the project layout in this repository: the source is in <code>server/webui/</code>, the built frontend lives in <code>server/public/</code>, and the model server entry point is <code>server.py</code>.</p>
+
+            <div class="article-list">
+                <p class="fw-bold">Example startup commands:</p>
+                <pre style="background: rgba(15,23,42,.9); padding: 1rem; border-radius: 12px; color: #e2e8f0; overflow-x:auto;">
+python server.py --model Qwen3-0.6B --prompt-style auto
+python server.py --model ./models/gpt2 --prompt-style raw
+                </pre>
+            </div>
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">What sets aiffy apart</h2>
+
+            <ul class="article-list">
+                <li><strong>Flexible model selection</strong>: choose a local model by path, name from <code>models/</code>, or a HuggingFace Hub ID.</li>
+                <li><strong>Adaptive prompt styles</strong>: the UI supports both <code>auto</code> chat templates for instruction models and <code>raw</code> concatenation for older base models like GPT-2.</li>
+                <li><strong>Persistent UI preferences</strong>: theme and appearance settings are saved in the browser and restored on reload.</li>
+                <li><strong>Fast rebuild workflow</strong>: frontend source changes in <code>server/webui/src/</code> are compiled into <code>server/public/</code> with <code>npm run build</code>.</li>
+            </ul>
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Theme support</h2>
+
+            <p>aiffy supports four appearance modes through the Settings panel:</p>
+            <ul class="article-list">
+                <li><strong>System</strong> — follow the operating system color scheme.</li>
+                <li><strong>Light</strong> — always use a light UI palette.</li>
+                <li><strong>Dark</strong> — always use a dark palette for low-light work.</li>
+                <li><strong>KDE Breeze</strong> — a dark theme with KDE-inspired styling and accent tones.</li>
+            </ul>
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Local-first design</h2>
+
+            <p>aiffy is built for local environments: it can run on your own machine without external API calls, while still offering a polished chat interface and convenient model tooling.</p>
+            <p>That makes it ideal for experimentation, prompt tuning, and quick evaluation of local LLMs in a browser-friendly shell.</p>
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Under the hood</h2>
+
+            <p>When aiffy starts, the server resolves the model in one of three ways: direct path, local repository folder under <code>models/</code>, or HuggingFace Hub lookup. This makes it easy to switch between local and external model sources without changing the UI.</p>
+
+            <p>The server also determines the decoding mode from the temperature value rather than a separate sampling flag. In practice, values above ~0.0001 use stochastic sampling, while values close to zero use greedy decoding.</p>
+
+            <strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/aitetic/aitetic.com" target="_blank" rel="noopener noreferrer">https://github.com/aitetic/aitetic.com</a>
+
+        </div>
+    </div>
+</div>
+<!-- Blog Post END -->
+
+<!-- Footer START -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 foot-col-1">
+                <img src="img/logo/aitetic-logo.svg" alt="logo" style="width: 120px; height: auto;" title="aitetic">
+                <p class="s-mrt-40">AI solutions development, LLM-models research for applied AI solutions.</p>
+                <ul class="social-footer">
+                    <li class="shadow">
+                        <a href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github iconhover" title="aitetic github"></i>
+                        </a>
+                    </li>
+                    <li class="shadow">
+                        <a href="https://huggingface.co/aitetic" target="_blank" rel="noopener noreferrer" title="aitetic HuggingFace">
+                            <img src="img/content/huggingface_logo-noborder.svg" class="iconhover" alt="Hugging Face" width="20" height="20">
+                        </a>
+                    </li>
+                    <li class="shadow">
+                        <a href="https://www.facebook.com/aitetic" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f iconhover" title="aitetic Facebook"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-2 footer-col-clone">
+                <h3>OUR SERVICES</h3>
+                <ul class="px-0">
+                    <li><a href="#">Business AI solutions</a>
+                    </li>
+                    <li><a href="#">Our mission</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-3 footer-col-clone">
+                <h3>OUR SERVICES</h3>
+                <ul class="px-0">
+                    <li><a href="#">Business Consultation</a>
+                    </li>
+                    <li><a href="#">Motivation and Evaluation</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-12 foot-bottom">
+              <p>Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> Aitetic. All rights reserved.
+              </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer END -->
+
+</body>
+</html>
