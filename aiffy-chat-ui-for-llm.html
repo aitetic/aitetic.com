@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Aiffy: an adaptive UI for Large Language Models</title>
+    <meta name="description" content="Aiffy is an adaptive UI shell for large language models — runs locally or as a deployed server, with a chat-first interface, multi-theme appearance, QA and Dialogue modes, agent tooling, and a FastAPI + Transformers backend.">
+
+    <meta name="keywords" content="Aiffy, UI for LLMs, adaptive LLM UI, local LLM UI, self-hosted LLM UI, chat interface, open-source LLM UI, FastAPI LLM server, Transformers UI, agent tooling, MCP, KDE Breeze theme">
+
+    <meta property="og:title" content="Aiffy: an adaptive UI for Large Language Models">
+    <meta property="og:description" content="Aiffy is an adaptive UI shell for LLMs — runs locally on a workstation or as a deployed server, with a chat-first interface, agent tooling, multiple themes, QA / Dialogue modes, and a Python backend built on FastAPI and Transformers.">
+
+    <meta name="google-site-verification" content="MCUg1m7fBbGFgcnHiz0u5Wgkmu6W4vbdClvsDqYg6J0" />
+
+    <link rel="canonical" href="https://aitetic.com/aiffy-chat-ui-for-llm.html" />
+
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" href="img/logo/aitetic-logo-min.svg" type="image/svg+xml">
+
+    <!-- Bootstrap-5.3.8 -->
+    <link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap.min.css">
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+    <!-- Slider -->
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/slider.css">
+    <!--Navigation Menu CSS-->
+    <link rel="stylesheet" type="text/css" href="css/navigation.css">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    <!-- Structured data: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Aiffy: chat UI for LLM",
+      "description": "Aiffy is a chat UI for LLM workflows — a polished, browser-based chat interface for local and self-hosted large language models, with theme controls, agent tooling, and a built-in FastAPI + Transformers backend.",
+      "image": "https://aitetic.com/images/ui-for-llms-overview.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Aitetic",
+        "url": "https://aitetic.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aitetic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://aitetic.com/img/logo/aitetic-logo.svg"
+        }
+      },
+      "datePublished": "2026-05-07",
+      "dateModified": "2026-05-07",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://aitetic.com/aiffy-chat-ui-for-llm.html"
+      },
+      "keywords": "Aiffy, chat UI for LLM, LLM chat interface, UI for large language models, local LLM UI, self-hosted LLM UI"
+    }
+    </script>
+</head>
+<body>
+
+
+<!-- Navbar START -->
+<header id="nav-transparent">
+    <div>
+        <nav id="navigation4" class="container navigation">
+            <div class="nav-header">
+                <a class="nav-brand" href="/">
+                    <img src="img/logo/aitetic-logo.svg" alt="Aitetic logo" class="main-logo" id="light_logo" title="aitetic">
+                    <img src="img/logo/aitetic-logo-inversed.svg" alt="Aitetic logo" class="main-logo" id="main_logo" title="aitetic">
+                </a>
+                <div class="nav-toggle"></div>
+            </div>
+            <div class="nav-menus-wrapper">
+                <ul class="nav-menu align-to-right">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="#">Articles</a>
+                        <ul class="nav-dropdown">
+                            <li><a href="/blog.html">ML Blog</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="me-2 align-middle" viewBox="0 0 512 499.36" role="img" height="16" width="16" aria-label="GitHub icon">
+                    	<path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                      	</path>
+                        </svg>GitHub</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Navbar END -->
+
+<!-- Page Title START -->
+<div class="page-title-section">
+    <div class="black-overlay-70"></div>
+    <div class="container">
+        <h1>Aiffy: An Adaptive UI for Large Language Models</h1>
+        <p>Aiffy is a chat-first UI shell for local LLMs — a SvelteKit frontend on top of a FastAPI and Transformers backend, designed for fast prompt iteration, agent tooling, and everyday work with language models.</p>
+    </div>
+</div>
+<!-- Page Title END -->
+
+<!-- Blog Post START -->
+<div class="section-wrapper">
+    <div class="container">
+
+        <article class="blog-post pr-lg-4 pr-0">
+            <img src="images/ui-for-llms-overview-small.png" alt="Aiffy chat UI for LLM — overview screenshot" class="mb-15">
+            <ul class="blog-post-info ps-0">
+                <li><i class="far fa-user"></i><span title="Aitetic">Aitetic</span></li>
+                <li><i class="far fa-calendar-alt"></i><span>May 7, 2026</span></li>
+            </ul>
+
+            <p><strong>Aiffy</strong> is a chat UI for LLM workflows, built on a modern Svelte-based frontend and a Python model-serving backend. It is designed for developers and AI practitioners who need a clean, chat-first interface for large language models without taking on a hosted dependency.</p>
+
+            <p>The main goals of Aiffy are:</p>
+            <ul class="article-list">
+                <li>Provide a focused chat UI for LLM interaction.</li>
+                <li>Offer theme controls and accessible appearance options.</li>
+                <li>Integrate directly with local model servers and tooling.</li>
+                <li>Make prompt testing and conversation workflows fast and intuitive.</li>
+            </ul>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Why a Dedicated Chat UI for LLM Matters</h2>
+
+            <p>A chat UI for LLM is more than a text box. Local and self-hosted large language models are powerful, but their default interfaces are usually a terminal, a raw HTTP endpoint, or a generic playground. None of these match how users actually want to talk to a model — turn by turn, with persistent history, configurable settings, and a layout that scales from a one-line prompt to a long technical conversation.</p>
+
+            <p>Aiffy combines the responsiveness of a browser-based interface with the flexibility to run custom models and tools locally. Unlike generic frontend demos, it is built specifically for chat-style LLM workflows: chat history, message rendering, settings panels, and a design that scales from quick prototype queries to longer, multi-turn conversations.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Key Characteristics of the Aiffy Chat UI</h2>
+
+            <p><strong>Chat-first</strong>: Aiffy is built around the chat interaction model. Conversations, message editing, regeneration, and streaming output are first-class concerns, not bolted-on features.</p>
+            <p><strong>Local and self-hosted friendly</strong>: Aiffy runs against local model backends and prioritises privacy and offline capability, while also working as a deployed service on a shared host.</p>
+            <p><strong>Theme-aware</strong>: it supports multiple UI themes — dark, light, system, and a KDE Breeze mode — so the chat UI fits into any working environment.</p>
+            <p><strong>Tool-friendly</strong>: the shell is designed to work with model tooling such as prompt templates, intent classifiers, agent tools, and MCP servers.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">How to Use the Aiffy Chat UI</h2>
+
+            <p>To use Aiffy, run the project's Python server and open the web UI in your browser. The backend serves the local model and the frontend provides the chat interface, settings, and built-in option panels:</p>
+
+            <div class="article-list">
+                <p class="fw-bold">Example startup commands:</p>
+                <pre style="background: rgba(15,23,42,.9); padding: 1rem; border-radius: 12px; color: #e2e8f0; overflow-x:auto;">
+python server.py --model Qwen3-0.6B --prompt-style auto
+python server.py --model ./models/gpt2 --prompt-style raw
+                </pre>
+            </div>
+
+            <p>The UI source lives in <code>server/webui/</code>, the built frontend lives in <code>server/public/</code>, and the model server entry point is <code>server.py</code>. A single Python process serves both the chat UI and the model — there is no separate Node runtime to manage in production.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">What Sets the Aiffy Chat UI Apart</h2>
+
+            <ul class="article-list">
+                <li><strong>Flexible model selection</strong>: choose a local model by path, by name from the <code>models/</code> folder, or by a Hugging Face Hub ID — the same launch command shape works for all three.</li>
+                <li><strong>Adaptive prompt styles</strong>: the UI supports both <code>auto</code> chat templates for instruction-tuned models and <code>raw</code> concatenation for older base models like GPT-2.</li>
+                <li><strong>Persistent UI preferences</strong>: theme and appearance settings are saved in the browser and restored on reload.</li>
+                <li><strong>Fast rebuild workflow</strong>: frontend source changes in <code>server/webui/src/</code> are compiled into <code>server/public/</code> with <code>npm run build</code>.</li>
+                <li><strong>Conversation history in the browser</strong>: chats are stored locally in IndexedDB, so the same Aiffy backend can serve many users without a shared database.</li>
+            </ul>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Chat Modes: Dialogue and QA</h2>
+
+            <p>The Aiffy chat UI offers two conversation modes, switchable from the sidebar:</p>
+
+            <ul class="article-list">
+                <li><strong>Dialogue</strong> (default) — sends the full active conversation on every turn, so the model sees its own prior replies and can refer back to earlier context.</li>
+                <li><strong>QA</strong> — sends only the latest user message plus any system prompt, treating each turn as an independent question.</li>
+            </ul>
+
+            <p>The selection is persisted in browser storage. Filtering happens on the way out, just before the request leaves the browser — the on-screen conversation is never modified, so switching from QA back to Dialogue mid-thread restores the full context for the next request.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Theme Support</h2>
+
+            <p>The Aiffy chat UI supports four appearance modes through the Settings panel:</p>
+            <ul class="article-list">
+                <li><strong>System</strong> — follows the operating system colour scheme automatically.</li>
+                <li><strong>Light</strong> — forces the light palette regardless of OS preference.</li>
+                <li><strong>Dark</strong> — forces the dark palette, suited to low-light work.</li>
+                <li><strong>KDE Breeze</strong> — a Plasma-inspired theme with a blue accent on a dark base, with KDE-style radii and font tweaks.</li>
+            </ul>
+
+            <p>The theme system is intentionally extensible: adding a new appearance is a matter of registering it in the theme enum, adding it to the settings list, and providing the matching CSS overrides.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Agent Tooling and Intent Classification</h2>
+
+            <p>Beyond plain chat, Aiffy includes an agent tooling layer. The server can classify a user message into a tool call and execute it server-side, instead of returning a plain text reply. A tooling provider implements three methods — a classifier prompt, a result normaliser, and an executor — and the chat persona prompt and the classifier prompt are kept strictly separate, so tool support never leaks into ordinary chat replies.</p>
+
+            <p>A standalone test harness for the intent classifier ships with the project, so the routing of user phrasings to tool intents can be verified offline, without starting the HTTP server.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">MCP Servers and Sampling Controls</h2>
+
+            <p>Aiffy supports the Model Context Protocol. MCP servers can be configured directly from the settings UI as a JSON list and are invoked alongside built-in tools. Per-server usage statistics are tracked locally so it is easy to see which integrations are actually being used.</p>
+
+            <p>The Settings panel also exposes a full set of sampling parameters surfaced from the server's defaults: <code>temperature</code>, <code>top_p</code>, <code>top_k</code>, <code>min_p</code>, <code>repeat_penalty</code>, <code>presence_penalty</code>, <code>frequency_penalty</code>, dynamic temperature, XTC and DRY samplers, and a <code>custom JSON</code> field for arbitrary parameters. Empty values are shown as placeholders and are not sent on the wire — the server-side default is used instead.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Adaptive Deployment</h2>
+
+            <p>Aiffy is built so the same chat UI for LLM works in two very different setups:</p>
+
+            <ul class="article-list">
+                <li>as a personal app on a developer workstation — for prompt iteration, model evaluation, and quick experiments;</li>
+                <li>as a deployed service on a shared host — for small teams who want a private LLM chat interface behind their own firewall.</li>
+            </ul>
+
+            <p>That makes Aiffy a practical choice for experimentation, prompt tuning, and quick evaluation of local LLMs in a browser-friendly shell — and equally suitable as a long-running internal tool.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Under the Hood</h2>
+
+            <p>When Aiffy starts, the server resolves the model in one of three ways: a direct path, a local repository folder under <code>models/</code>, or a Hugging Face Hub lookup. This makes it easy to switch between local and external model sources without changing the UI.</p>
+
+            <p>The server also determines the decoding mode from the temperature value rather than a separate sampling flag. In practice, values above ~0.0001 use stochastic sampling, while values close to zero use deterministic greedy decoding — one knob, one behaviour.</p>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Who Aiffy Is For</h2>
+
+            <p>The Aiffy chat UI for LLM is a strong fit when you want to:</p>
+
+            <ul class="article-list">
+                <li>experiment with local open-weight models in a polished chat interface;</li>
+                <li>iterate quickly on prompts and sampling parameters without leaving the browser;</li>
+                <li>build a small intent-classification and tool-execution layer on top of an existing model;</li>
+                <li>host a private LLM chat frontend on a developer workstation or an internal box;</li>
+                <li>prototype an AI-assisted internal tool before committing to a heavier stack.</li>
+            </ul>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Conclusion</h2>
+
+            <p>Aiffy is a focused chat UI for LLM workflows. It pairs a SvelteKit chat interface with a FastAPI + Transformers backend, supports both base and instruction-tuned models, exposes a full set of sampling controls, and includes a clean tooling layer for intent classification and tool execution. With four built-in themes and explicit Dialogue and QA modes, it gives developers and small teams a private, browser-native chat experience over their own model — local on a workstation, or self-hosted behind a shared host.</p>
+
+            <strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">https://github.com/aitetic</a>
+
+        </article>
+    </div>
+</div>
+<!-- Blog Post END -->
+
+<!-- Footer START -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 foot-col-1">
+                <img src="img/logo/aitetic-logo.svg" alt="Aitetic logo" style="width: 120px; height: auto;" title="aitetic">
+                <p class="s-mrt-40">AI solutions development, LLM-models research for applied AI solutions.</p>
+                <ul class="social-footer">
+                    <li class="shadow">
+                        <a href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github iconhover" title="aitetic github"></i>
+                        </a>
+                    </li>
+                    <li class="shadow">
+                        <a href="https://huggingface.co/aitetic" target="_blank" rel="noopener noreferrer" title="aitetic HuggingFace">
+                            <img src="img/content/huggingface_logo-noborder.svg" class="iconhover" alt="Hugging Face" width="20" height="20">
+                        </a>
+                    </li>
+                    <li class="shadow">
+                        <a href="https://www.facebook.com/aitetic" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f iconhover" title="aitetic Facebook"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-2 footer-col-clone">
+                <h3>OUR SERVICES</h3>
+                <ul class="px-0">
+                    <li><a href="#">Business AI solutions</a>
+                    </li>
+                    <li><a href="#">Our mission</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-3 footer-col-clone">
+                <h3>OUR SERVICES</h3>
+                <ul class="px-0">
+                    <li><a href="#">Business Consultation</a>
+                    </li>
+                    <li><a href="#">Motivation and Evaluation</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-12 foot-bottom">
+              <p>Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> Aitetic. All rights reserved.
+              </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer END -->
+
+<!-- Jquery -->
+<script src="./js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="./js/bootstrap.min.js"></script>
+<!-- Navbar JS -->
+<script src="./js/navigation.js"></script>
+<script src="./js/navigation.fixed.js"></script>
+<!-- Main JS -->
+<script src="./js/main.js"></script>
+</body>
+</html>
