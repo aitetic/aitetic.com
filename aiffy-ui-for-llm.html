@@ -13,20 +13,20 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="Aiffy: chat UI for LLM">
     <meta property="og:description" content="A polished chat UI for LLM workflows — built for local and self-hosted models, with theme controls, agent tooling, QA and Dialogue modes, and a FastAPI + Transformers backend.">
-    <meta property="og:url" content="https://aitetic.com/aiffy-chat-ui-for-llm.html">
+    <meta property="og:url" content="https://aitetic.com/aiffy-ui-for-llm.html">
     <meta property="og:site_name" content="Aitetic">
-    <meta property="og:image" content="https://aitetic.com/images/ui-for-llms-overview.png">
+    <meta property="og:image" content="https://aitetic.com/images/aiffy-ui-for-llm.png">
     <meta property="og:image:alt" content="Aiffy chat UI for LLM — overview screenshot">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Aiffy: chat UI for LLM">
     <meta name="twitter:description" content="A polished chat UI for LLM workflows — built for local and self-hosted models, with theme controls, agent tooling, and a FastAPI + Transformers backend.">
-    <meta name="twitter:image" content="https://aitetic.com/images/ui-for-llms-overview.png">
+    <meta name="twitter:image" content="https://aitetic.com/images/aiffy-ui-for-llm.png">
 
     <meta name="google-site-verification" content="MCUg1m7fBbGFgcnHiz0u5Wgkmu6W4vbdClvsDqYg6J0" />
 
-    <link rel="canonical" href="https://aitetic.com/aiffy-ui-for-llms.html" />
+    <link rel="canonical" href="https://aitetic.com/aiffy-ui-for-llm.html" />
 
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="favicon.ico"/>
@@ -97,13 +97,13 @@
     <div class="container">
 
         <div class="blog-post pr-lg-4 pr-0">
-            <img src="images/ui-for-llms-overview-small.png" alt="Aiffy UI for LLMs" class="mb-15">
+            <img src="images/aiffy-ui-for-llm.png" alt="Aiffy UI for LLM" class="mb-15">
             <ul class="blog-post-info ps-0">
                 <li><i class="far fa-user"></i><span title="Aitetic">Aitetic</span></li>
                 <li><i class="far fa-calendar-alt"></i><span>May 7, 2026</span></li>
             </ul>
 
-            <p>Local language models have moved from a research curiosity to a practical tool. Developers, researchers, and small teams want to experiment with open-weight models on their own hardware, test prompts privately, and connect models to internal tools — without sending data to a hosted provider. What is missing in many setups is a clean, opinionated interface that ties the model server, the chat experience, and the tooling layer together.</p>
+            <p><strong>Local language models</strong> have moved from a research curiosity to a practical tool. Developers, researchers, and small teams want to experiment with open-weight models on their own hardware, test prompts privately, and connect models to internal tools — without sending data to a hosted provider. What is missing in many setups is a clean, opinionated interface that ties the model server, the chat experience, and the tooling layer together.</p>
 
             <p><strong>Aiffy</strong> is built to fill exactly that gap. It is an adaptive UI shell for large language models that combines a SvelteKit + TypeScript frontend with a Python backend based on FastAPI and Hugging Face Transformers. The same build runs equally well as a personal app on a developer workstation or as a deployed service behind a shared host, with a familiar chat experience, responsive interaction, and straightforward integration with model backends — suitable for local or remote inference, prompt testing, and everyday work with language models.</p>
 
@@ -308,7 +308,8 @@ python server.py --model ./models/gpt2 --prompt-style raw
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">Conclusion</h2>
 
-            <p>Aiffy is a small but complete local UI for large language models. It pairs a SvelteKit chat interface with a FastAPI + Transformers backend, supports both base and instruction-tuned models through an explicit prompt-style switch, exposes a full set of sampling controls, and includes a clean tooling layer for intent classification and tool execution. The visual side is taken care of with four built-in themes — System, Light, Dark, and KDE Breeze — and the conversation side with explicit Dialogue and QA modes.</p>
+            <p>Aiffy is a small but complete local UI for large language models. It pairs a SvelteKit chat interface with a FastAPI + Transformers backend, supports both base and instruction-tuned models through an explicit prompt-style switch, exposes a full set of sampling controls, and includes a clean tooling layer for intent classification and tool execution. 
+                The visual side is taken care of with four built-in themes — System, Light, Dark, and KDE Breeze — and the conversation side with explicit Dialogue and QA (Question-Answering) modes.</p>
 
             <p>For developers and AI practitioners who want a private, chat-first interface to their own model, with a well-defined surface for extension and no cloud dependencies, Aiffy provides a practical starting point.</p>
 
