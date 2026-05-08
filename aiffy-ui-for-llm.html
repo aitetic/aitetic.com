@@ -105,19 +105,19 @@
 
             <p><strong>Local language models</strong> have moved from a research curiosity to a practical tool. Developers, researchers, and small teams want to experiment with open-weight models on their own hardware, test prompts privately, and connect models to internal tools — without sending data to a hosted provider. What is missing in many setups is a clean, opinionated interface that ties the model server, the chat experience, and the tooling layer together.</p>
 
-            <p><strong>Aiffy</strong> is built to fill exactly that gap. It is an adaptive UI shell for large language models that combines a SvelteKit + TypeScript frontend with a Python backend based on FastAPI and Hugging Face Transformers. The same build runs equally well as a personal app on a developer workstation or as a deployed service behind a shared host, with a familiar chat experience, responsive interaction, and straightforward integration with model backends — suitable for local or remote inference, prompt testing, and everyday work with language models.</p>
+            <p><strong>Aiffy</strong> is built to fill exactly that gap. It is an <strong>adaptive UI shell for large language models</strong> that combines a <code class="code-inline">SvelteKit + TypeScript</code> frontend with a <code class="code-inline">Python</code> backend based on <code class="code-inline">FastAPI</code> and <code class="code-inline">Hugging Face Transformers</code>. The same build runs equally well as a personal app on a developer workstation or as a deployed service behind a shared host, with a familiar chat experience, responsive interaction, and straightforward integration with model backends — suitable for <strong>local or remote inference</strong>, <strong>prompt testing</strong>, and everyday work with language models.</p>
 
 
-            <h2 class="fw-bold mt-5" style="font-size: 26px;">What Aiffy Is</h2>
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">What is Aiffy?</h2>
 
-            <p>Aiffy is not a wrapper around a hosted API. It is a complete local stack with two components that ship together:</p>
+            <p>Aiffy is not a wrapper around a hosted API. It is a <strong>complete local stack</strong> with two components that ship together:</p>
 
             <ul class="article-list">
-                <li>a Python server (FastAPI) that loads a model with Hugging Face Transformers and exposes a chat endpoint;</li>
-                <li>a SvelteKit + TypeScript single-page application that provides the chat UI, settings, theme controls, and integration points.</li>
+                <li><strong>FastAPI LLM server</strong> that loads a model with <code class="code-inline">Hugging Face Transformers</code> and exposes a chat endpoint;</li>
+                <li><strong>SvelteKit + TypeScript chat UI</strong> that provides settings, theme controls, and integration points.</li>
             </ul>
 
-            <p>The frontend is compiled into a static bundle that the Python server serves directly, so a single process is enough to run the entire product locally. There is no separate Node runtime to manage in production, no external database, and no required network calls beyond the optional model download from Hugging Face Hub.</p>
+            <p>The frontend is compiled into a static bundle that the Python server serves directly, so <strong>a single process is enough to run the entire product locally</strong>. There is no separate <code class="code-inline">Node</code> runtime to manage in production, no external database, and no required network calls beyond the optional model download from <code class="code-inline">Hugging Face Hub</code>.</p>
 
             <p>Aiffy is designed around three principles:</p>
 
@@ -128,7 +128,18 @@
             </ul>
 
 
-            <h2 class="fw-bold mt-5" style="font-size: 26px;">Quick Start</h2>
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Key Features of the Aiffy LLM Chat Interface</h2>
+
+            <ul class="article-list">
+                <li><strong>Clean chat interface</strong> for working with large language models in a browser.</li>
+                <li><strong>Conversation history</strong> for keeping previous prompts and responses available.</li>
+                <li><strong>Local and self-hosted LLM support</strong> for private AI experiments and internal workflows.</li>
+                <li><strong>Developer-oriented workflow</strong> for testing prompts, models, sampling settings, and tool calls.</li>
+                <li><strong>Browser-based LLM chat UI</strong> that keeps the interaction simple, fast, and accessible.</li>
+            </ul>
+
+
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Quick Start for Local LLM Workflows</h2>
 
             <p>Aiffy is intentionally easy to launch. After installing the Python dependencies, a single command brings up the server and serves the precompiled UI:</p>
 
@@ -137,16 +148,16 @@ pip install -r requirements.txt
 python server.py --model gpt2
             </pre>
 
-            <p>Once the server is running, the demo is available in the browser at <code>http://127.0.0.1:8080</code>. The default port and host can be overridden with <code>--port</code> and <code>--host</code>, and a bearer token can be required via <code>--api-key</code> when the server is exposed beyond localhost.</p>
+            <p>Once the server is running, the demo is available in the browser at <code class="code-inline">http://127.0.0.1:8080</code>. The default port and host can be overridden with <code class="code-inline">--port</code> and <code class="code-inline">--host</code>, and a bearer token can be required via <code class="code-inline">--api-key</code> when the server is exposed beyond localhost.</p>
 
 
-            <h2 class="fw-bold mt-5" style="font-size: 26px;">Flexible Model Loading</h2>
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Flexible Model Loading for Local and Hub Models</h2>
 
-            <p>Aiffy resolves the <code>--model</code> argument through a clear priority order, so you can move between local checkpoints and Hugging Face Hub models without changing how you launch the server:</p>
+            <p>Aiffy resolves the <code class="code-inline">--model</code> argument through a clear priority order, so you can move between local checkpoints and <code class="code-inline">Hugging Face Hub</code> models without changing how you launch the server:</p>
 
             <ul class="article-list">
                 <li>if the value is a path that exists on disk, it is used directly;</li>
-                <li>otherwise, if a folder with that name exists under <code>models/</code> in the repository, it is taken from there;</li>
+                <li>otherwise, if a folder with that name exists under <code class="code-inline">models/</code> in the repository, it is taken from there;</li>
                 <li>otherwise, the model is downloaded from the Hugging Face Hub.</li>
             </ul>
 
@@ -159,16 +170,16 @@ python server.py --model Qwen/Qwen2.5-1.5B-Instruct
 python server.py --model ./models/gpt2 --prompt-style raw
             </pre>
 
-            <p>Device placement and dtype are auto-selected by default, with explicit overrides available for users who want to pin the model to <code>cpu</code>, <code>cuda</code>, or <code>mps</code>, or to force <code>float16</code>, <code>bfloat16</code>, or <code>float32</code> precision.</p>
+            <p><strong>Device placement and dtype</strong> are auto-selected by default, with explicit overrides available for users who want to pin the model to <code class="code-inline">cpu</code>, <code class="code-inline">cuda</code>, or <code class="code-inline">mps</code>, or to force <code class="code-inline">float16</code>, <code class="code-inline">bfloat16</code>, or <code class="code-inline">float32</code> precision.</p>
 
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">Prompt Styles for Base and Instruction-Tuned Models</h2>
 
-            <p>Different families of models expect different prompt formats. Aiffy makes that explicit through a <code>prompt-style</code> switch instead of guessing silently:</p>
+            <p>Different families of models expect different prompt formats. Aiffy makes that explicit through a <code class="code-inline">prompt-style</code> switch instead of guessing silently:</p>
 
             <ul class="article-list">
-                <li><strong>auto</strong> (default) — uses the tokenizer's <code>chat_template</code> when available; otherwise falls back to a ChatML-style format with <code>&lt;|user|&gt;</code> and <code>&lt;|assistant|&gt;</code> markers. This is the right choice for instruction-tuned models such as Qwen-Instruct or Llama-Instruct.</li>
-                <li><strong>raw</strong> — concatenates the message contents with newlines and no role markers. This is the right choice for base completion models such as GPT-2, which simply continue the text.</li>
+                <li><code class="code-inline">auto</code> (default) — uses the tokenizer's <code class="code-inline">chat_template</code> when available; otherwise falls back to a <code class="code-inline">ChatML</code>-style format with <code class="code-inline">&lt;|user|&gt;</code> and <code class="code-inline">&lt;|assistant|&gt;</code> markers. This is the right choice for instruction-tuned models such as Qwen-Instruct or Llama-Instruct.</li>
+                <li><code class="code-inline">raw</code> — concatenates the message contents with newlines and no role markers. This is the right choice for base completion models such as GPT-2, which simply continue the text.</li>
             </ul>
 
             <p>Choosing the wrong style is a common reason a local model produces gibberish or refuses to answer, so Aiffy treats this decision as an explicit configuration option rather than a hidden default.</p>
@@ -176,40 +187,40 @@ python server.py --model ./models/gpt2 --prompt-style raw
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">Sampling and Greedy Decoding</h2>
 
-            <p>Aiffy follows a simple rule for decoding mode: there is no separate <code>do_sample</code> flag. The mode is inferred from the temperature value. Any temperature meaningfully above zero enables stochastic sampling with the configured <code>temperature</code>, <code>top_p</code>, <code>top_k</code>, and <code>repeat_penalty</code>. A temperature of zero (or any value at or below a small epsilon) switches the model to deterministic greedy decoding.</p>
+            <p>Aiffy follows a simple rule for decoding mode: there is no separate <code class="code-inline">do_sample</code> flag. The mode is inferred from the temperature value. Any temperature meaningfully above zero enables stochastic sampling with the configured <code class="code-inline">temperature</code>, <code class="code-inline">top_p</code>, <code class="code-inline">top_k</code>, and <code class="code-inline">repeat_penalty</code>. A temperature of zero (or any value at or below a small epsilon) switches the model to deterministic greedy decoding.</p>
 
-            <p>This keeps the mental model small: one knob, one behaviour. Defaults are stored in a single <code>DEFAULT_GEN_PARAMS</code> object on the server and surfaced to the frontend as placeholders in the <strong>Settings → Generation</strong> tab. To force greedy decoding for a single request, simply set <code>temperature: 0</code> in the request body or in the UI.</p>
+            <p>This keeps the mental model small: one knob, one behaviour. Defaults are stored in a single <code class="code-inline">DEFAULT_GEN_PARAMS</code> object on the server and surfaced to the frontend as placeholders in the <code class="code-inline">Settings → Generation</code> tab. To force greedy decoding for a single request, simply set <code class="code-inline">temperature: 0</code> in the request body or in the UI.</p>
 
 
-            <h2 class="fw-bold mt-5" style="font-size: 26px;">Visual Themes support</h2>
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Visual Theme Support for Long LLM Sessions</h2>
 
-            <p>Appearance settings live in <strong>Settings → General → Theme</strong> and are persisted in browser storage. Aiffy ships with four themes out of the box:</p>
+            <p>Appearance settings live in <code class="code-inline">Settings → General → Theme</code> and are persisted in browser storage. Aiffy ships with four themes out of the box:</p>
 
             <ul class="article-list">
-                <li><strong>System</strong> — follows the operating system colour scheme and switches automatically when the OS preference changes;</li>
-                <li><strong>Light</strong> — forces the light palette regardless of OS settings;</li>
-                <li><strong>Dark</strong> — forces the dark palette, suitable for low-light work;</li>
-                <li><strong>KDE Breeze</strong> — a Plasma-inspired theme with a blue accent on a dark base, with KDE-style radii and font tweaks layered on top of the dark token set.</li>
+                <li><code class="code-inline">System</code> — follows the operating system colour scheme and switches automatically when the OS preference changes;</li>
+                <li><code class="code-inline">Light</code> — forces the light palette regardless of OS settings;</li>
+                <li><code class="code-inline">Dark</code> — forces the dark palette, suitable for low-light work;</li>
+                <li><code class="code-inline">KDE Breeze</code> — a Plasma-inspired theme with a blue accent on a dark base, with KDE-style radii and font tweaks layered on top of the dark token set.</li>
             </ul>
 
             <p>The theme system is designed to be extensible. Adding a new appearance is a matter of registering it in the theme enum, adding it to the settings list, and providing the matching CSS overrides — the rest of the UI picks it up automatically.</p>
 
 
-            <h2 class="fw-bold mt-5" style="font-size: 26px;">Chat Modes: Dialogue and QA</h2>
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Chat Modes: Dialogue and QA for Conversation History</h2>
 
-            <p>The first dropdown in the left sidebar controls how much conversation history is sent to the model on each turn. Aiffy offers two modes:</p>
+            <p>The first dropdown in the left sidebar controls how much <strong>conversation history</strong> is sent to the model on each turn. Aiffy offers two modes:</p>
 
             <ul class="article-list">
                 <li><strong>Dialogue</strong> (default) — sends all messages from the active conversation, so the model sees its own prior replies and can refer back to earlier context;</li>
-                <li><strong>QA</strong> — sends only the latest user message plus any system message, treating each turn as an independent question.</li>
+                <li><code class="code-inline">QA</code> — sends only the latest user message plus any system message, treating each turn as an independent question.</li>
             </ul>
 
-            <p>The selection is persisted in browser storage and synchronised across the UI. Filtering happens on the way out, just before the request is sent — the conversation in IndexedDB and on screen is never modified, so switching from QA back to Dialogue mid-thread restores the full context for the next request. This is also independent of the server-side history cap (<code>--max-history</code>), which limits history for any client; QA mode strips it client-side before the request even leaves the browser.</p>
+            <p>The selection is persisted in browser storage and synchronised across the UI. Filtering happens on the way out, just before the request is sent — the conversation in <code class="code-inline">IndexedDB</code> and on screen is never modified, so switching from QA back to Dialogue mid-thread restores the full context for the next request. This is also independent of the server-side history cap (<code class="code-inline">--max-history</code>), which limits history for any client; QA mode strips it client-side before the request even leaves the browser.</p>
 
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">Configurable Data Sources</h2>
 
-            <p>The left sidebar surfaces a list of configurable data sources — for example, projects in Jira, spaces in Confluence, or repositories on GitHub. The list is driven by a small JSON config file that the server serves alongside the UI bundle:</p>
+            <p>The left sidebar surfaces a list of configurable data sources — for example, projects in Jira, spaces in Confluence, or repositories on GitHub. The list is driven by a small <code class="code-inline">JSON</code> config file that the server serves alongside the UI bundle:</p>
 
             <pre style="background: rgba(15,23,42,.9); padding: 1rem; border-radius: 12px; color: #e2e8f0; overflow-x:auto;">
 {
@@ -222,24 +233,24 @@ python server.py --model ./models/gpt2 --prompt-style raw
             <p>The file can be edited directly with no rebuild required, which makes it easy to adapt the same Aiffy build to different teams or projects without recompiling the frontend.</p>
 
 
-            <h2 class="fw-bold mt-5" style="font-size: 26px;">Agent Tooling</h2>
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Agent Tooling for Developer-Focused LLM Interfaces</h2>
 
-            <p>Aiffy includes a built-in tooling layer that lets the server classify a user message into a tool call and execute it server-side, instead of generating a plain chat reply. A provider is a Python class that implements three methods:</p>
+            <p>Aiffy includes a <strong>built-in agent tooling layer</strong> that lets the server classify a user message into a tool call and execute it server-side, instead of generating a plain chat reply. A provider is a Python class that implements three methods:</p>
 
             <ul class="article-list">
-                <li><code>classifier_prompt()</code> — the system prompt for the intent-classification pass, instructing the model to return JSON;</li>
-                <li><code>normalize_result()</code> — validates and cleans the JSON the classifier returned;</li>
-                <li><code>execute()</code> — runs the tool by name and returns its result.</li>
+                <li><code class="code-inline">classifier_prompt()</code> — the system prompt for the intent-classification pass, instructing the model to return <code class="code-inline">JSON</code>;</li>
+                <li><code class="code-inline">normalize_result()</code> — validates and cleans the JSON the classifier returned;</li>
+                <li><code class="code-inline">execute()</code> — runs the tool by name and returns its result.</li>
             </ul>
 
-            <p>The chat persona prompt and the classifier prompt are kept strictly separate. The persona is used when the classifier returns <code>unknown</code> and the request falls through to plain generation, while the classifier prompt is used only for the isolated classification pass. This separation is important — collapsing them into one prompt is the most common reason a tool-enabled model starts replying in JSON for ordinary chat messages.</p>
+            <p>The chat persona prompt and the classifier prompt are kept strictly separate. The persona is used when the classifier returns <code class="code-inline">unknown</code> and the request falls through to plain generation, while the classifier prompt is used only for the isolated classification pass. This separation is important — collapsing them into one prompt is the most common reason a tool-enabled model starts replying in <code class="code-inline">JSON</code> for ordinary chat messages.</p>
 
             <p>A reference notebook provider ships with the project, demonstrating five tool intents (add, search, list, delete contacts and notes). Each tool method is a stub with a clear extension point, so building a new tooling backend is mostly a matter of swapping the prompt, normaliser, and tool implementations.</p>
 
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">Intent Classifier Testing</h2>
 
-            <p>To make tooling reliable, Aiffy ships with a standalone test harness for the intent classifier. It loads the model directly, replays a curated set of utterances, and reports classification accuracy without starting the HTTP server, opening any ports, or requiring external services. This makes it easy to iterate on the classifier prompt and verify that real user phrasings are routed to the right tool before deploying changes.</p>
+            <p>To make tooling reliable, Aiffy ships with a <strong>standalone test harness for the intent classifier</strong>. It loads the model directly, replays a curated set of utterances, and reports classification accuracy without starting the HTTP server, opening any ports, or requiring external services. This makes it easy to iterate on the classifier prompt and verify that real user phrasings are routed to the right tool before deploying changes.</p>
 
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">Generation Settings and Sampling Controls</h2>
@@ -247,12 +258,12 @@ python server.py --model ./models/gpt2 --prompt-style raw
             <p>The Settings panel exposes a full set of sampling parameters surfaced from the server's defaults. Empty values are shown as placeholders and are not sent on the wire — the server-side default is used instead. Out of the box, the UI exposes:</p>
 
             <ul class="article-list">
-                <li><strong>temperature</strong>, <strong>top_p</strong>, <strong>top_k</strong>, <strong>min_p</strong> — core sampling controls;</li>
-                <li><strong>repeat_penalty</strong>, <strong>presence_penalty</strong>, <strong>frequency_penalty</strong> — repetition controls;</li>
-                <li><strong>dynatemp_range</strong>, <strong>dynatemp_exponent</strong> — entropy-based dynamic temperature;</li>
-                <li><strong>xtc_probability</strong>, <strong>xtc_threshold</strong> — XTC sampler;</li>
-                <li><strong>dry_multiplier</strong>, <strong>dry_base</strong>, <strong>dry_allowed_length</strong>, <strong>dry_penalty_last_n</strong> — DRY sampler for long-context repetition control;</li>
-                <li><strong>max_tokens</strong>, <strong>typ_p</strong>, and a <strong>custom JSON</strong> field for arbitrary parameters.</li>
+                <li><code class="code-inline">temperature</code>, <code class="code-inline">top_p</code>, <code class="code-inline">top_k</code>, <code class="code-inline">min_p</code> — core sampling controls;</li>
+                <li><code class="code-inline">repeat_penalty</code>, <code class="code-inline">presence_penalty</code>, <code class="code-inline">frequency_penalty</code> — repetition controls;</li>
+                <li><code class="code-inline">dynatemp_range</code>, <code class="code-inline">dynatemp_exponent</code> — entropy-based dynamic temperature;</li>
+                <li><code class="code-inline">xtc_probability</code>, <code class="code-inline">xtc_threshold</code> — XTC sampler;</li>
+                <li><code class="code-inline">dry_multiplier</code>, <code class="code-inline">dry_base</code>, <code class="code-inline">dry_allowed_length</code>, <code class="code-inline">dry_penalty_last_n</code> — DRY sampler for long-context repetition control;</li>
+                <li><code class="code-inline">max_tokens</code>, <code class="code-inline">typ_p</code>, and a <code class="code-inline">custom JSON</code> field for arbitrary parameters.</li>
             </ul>
 
             <p>The same surface also includes quality-of-life options: keeping generation statistics visible after the response finishes, displaying tokens-per-second and duration under each assistant message, rendering user content as Markdown, controlling autoscroll behaviour, and pre-encoding the conversation after each turn so that the next prompt is already cached on the server while the user reads the previous reply.</p>
@@ -260,7 +271,7 @@ python server.py --model ./models/gpt2 --prompt-style raw
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">MCP Servers</h2>
 
-            <p>Aiffy supports the Model Context Protocol. MCP servers can be configured directly from the settings UI as a JSON list and are invoked alongside built-in tools. Per-server usage statistics are tracked locally so it is easy to see which integrations are actually being used. This makes Aiffy a practical host for both ad-hoc personal MCP servers and shared team integrations.</p>
+            <p>Aiffy supports the <strong>Model Context Protocol</strong>. MCP servers can be configured directly from the settings UI as a <code class="code-inline">JSON</code> list and are invoked alongside built-in tools. Per-server usage statistics are tracked locally so it is easy to see which integrations are actually being used. This makes Aiffy a practical host for both ad-hoc personal MCP servers and shared team integrations.</p>
 
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">Reasoning, Continue, and Python Interpreter</h2>
@@ -270,36 +281,36 @@ python server.py --model ./models/gpt2 --prompt-style raw
             <ul class="article-list">
                 <li><strong>Reasoning controls</strong> — the UI can show the thought process inline while the model is still producing it, and lets the user choose whether reasoning from previous turns is fed back into the next request, so the model sees its own chain-of-thought across turns;</li>
                 <li><strong>Continue generation</strong> — assistant messages can be extended with a single click, which is useful when the model stops mid-thought or hits a token limit;</li>
-                <li><strong>Built-in Python interpreter</strong> — an optional Pyodide-based runtime that executes Python code blocks from the chat directly in the browser, with no server round trip.</li>
+                <li><strong>Built-in Python interpreter</strong> — an optional <code class="code-inline">Pyodide</code>-based runtime that executes Python code blocks from the chat directly in the browser, with no server round trip.</li>
             </ul>
 
 
-            <h2 class="fw-bold mt-5" style="font-size: 26px;">Architecture in One Glance</h2>
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Architecture of the Browser-Based LLM Chat Interface</h2>
 
             <p>The project layout is intentionally small and easy to navigate:</p>
 
             <ul class="article-list">
-                <li><code>server.py</code> — the FastAPI server, model loading, prompt building, and the streaming chat endpoint;</li>
-                <li><code>models/</code> — local model checkpoints (excluded from the repository);</li>
-                <li><code>server/public/</code> — the compiled UI bundle and the runtime <code>config.json</code>;</li>
-                <li><code>server/webui/src/</code> — the SvelteKit + TypeScript source for the frontend;</li>
-                <li><code>server/webui/static/config.json</code> — the source data-source configuration that is copied into <code>server/public/</code> on every build.</li>
+                <li><code class="code-inline">server.py</code> — the FastAPI server, model loading, prompt building, and the streaming chat endpoint;</li>
+                <li><code class="code-inline">models/</code> — local model checkpoints (excluded from the repository);</li>
+                <li><code class="code-inline">server/public/</code> — the compiled UI bundle and the runtime <code class="code-inline">config.json</code>;</li>
+                <li><code class="code-inline">server/webui/src/</code> — the SvelteKit + TypeScript source for the frontend;</li>
+                <li><code class="code-inline">server/webui/static/config.json</code> — the source data-source configuration that is copied into <code class="code-inline">server/public/</code> on every build.</li>
             </ul>
 
-            <p>Rebuilding the UI is only required when the frontend source changes. A standard <code>npm install</code> followed by <code>npm run build</code> produces the bundle that the Python server then serves directly.</p>
+            <p>Rebuilding the UI is only required when the frontend source changes. A standard <code class="code-inline">npm install</code> followed by <code class="code-inline">npm run build</code> produces the bundle that the Python server then serves directly.</p>
 
 
-            <h2 class="fw-bold mt-5" style="font-size: 26px;">Where Aiffy Fits</h2>
+            <h2 class="fw-bold mt-5" style="font-size: 26px;">Where Aiffy Fits in the Open-Source LLM UI Ecosystem</h2>
 
-            <p>The open-source LLM UI ecosystem is crowded — text-generation web UIs, chat shells around llama.cpp, hosted-model playgrounds, and full AI workspaces all coexist. Aiffy occupies a deliberately narrow niche: it is the UI shell you reach for when you want a clean, opinionated chat experience over your own model, with first-class support for prompt iteration and a small but useful tooling layer.</p>
+            <p>The open-source LLM UI ecosystem is crowded — text-generation web UIs, chat shells around llama.cpp, hosted-model playgrounds, and full AI workspaces all coexist. Aiffy occupies a deliberately narrow niche: it is the UI shell you reach for when you want a <strong>clean, opinionated chat experience over your own model</strong>, with first-class support for prompt iteration and a small but useful tooling layer.</p>
 
             <p>Aiffy is a strong fit when you want to:</p>
 
             <ul class="article-list">
-                <li>experiment with local open-weight models in a polished chat interface;</li>
-                <li>iterate quickly on prompts and sampling parameters without leaving the browser;</li>
+                <li>experiment with <strong>local open-weight models</strong> in a polished chat interface;</li>
+                <li>iterate quickly on <strong>prompts and sampling parameters</strong> without leaving the browser;</li>
                 <li>build a small intent-classification + tool-execution layer on top of an existing model;</li>
-                <li>host a private, single-process LLM frontend on a developer workstation or an internal box;</li>
+                <li>host a <strong>private, single-process LLM frontend</strong> on a developer workstation or an internal box;</li>
                 <li>prototype an AI-assisted internal tool before committing to a heavier stack.</li>
             </ul>
 
@@ -308,10 +319,10 @@ python server.py --model ./models/gpt2 --prompt-style raw
 
             <h2 class="fw-bold mt-5" style="font-size: 26px;">Conclusion</h2>
 
-            <p>Aiffy is a small but complete local UI for large language models. It pairs a SvelteKit chat interface with a FastAPI + Transformers backend, supports both base and instruction-tuned models through an explicit prompt-style switch, exposes a full set of sampling controls, and includes a clean tooling layer for intent classification and tool execution. 
+            <p>Aiffy is a <strong>small but complete local UI for large language models</strong>. It pairs a SvelteKit chat interface with a FastAPI + Transformers backend, supports both base and instruction-tuned models through an explicit prompt-style switch, exposes a full set of sampling controls, and includes a clean tooling layer for intent classification and tool execution. 
                 The visual side is taken care of with four built-in themes — System, Light, Dark, and KDE Breeze — and the conversation side with explicit Dialogue and QA (Question-Answering) modes.</p>
 
-            <p>For developers and AI practitioners who want a private, chat-first interface to their own model, with a well-defined surface for extension and no cloud dependencies, Aiffy provides a practical starting point.</p>
+            <p>For developers and AI practitioners who want a <strong>private, chat-first interface to their own model</strong>, with a well-defined surface for extension and no cloud dependencies, Aiffy provides a practical starting point.</p>
 
             <strong>GitHub Link:</strong> <a class="text-inherit" href="https://github.com/aitetic" target="_blank" rel="noopener noreferrer">https://github.com/aitetic</a>
 
