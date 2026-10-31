@@ -227,7 +227,79 @@
 <p>That shift also changes how we think about capability. Intelligence in production is not just about the strongest single model. It is about how well the whole system allocates effort. A compact model that solves a narrow task instantly may be more valuable than a huge model that solves it beautifully but expensively.</p>
 
 
+<!-- AITETIC: Scalable AI Agents expansion | Insert before the article Conclusion -->
+<section id="what-makes-ai-agents-scalable" class="article-section">
+  <h2>What Makes AI Agents Scalable?</h2>
+  <p>A scalable AI agent is not simply an agent powered by a larger model or deployed on a larger server. Scalability means the system can handle increasing workloads while maintaining acceptable response times, reliability, output quality, and cost per completed task. The relevant unit of work is often not a model request but an entire <strong>agent workflow</strong>: interpretation, planning, retrieval, tool execution, validation, and response generation.</p>
+  <p>Three dimensions matter. <strong>Throughput scalability</strong> is the ability to complete more workflows per minute as capacity grows. <strong>Operational scalability</strong> is the ability to add tools, specialized agents, and integrations without making the system fragile. <strong>Economic scalability</strong> means that the cost of serving additional tasks stays predictable rather than growing uncontrollably because every step invokes an expensive general-purpose model.</p>
+  <p>Consider an assistant processing ten customer requests per minute versus ten thousand. A monolithic design that performs every classification, lookup, and formatting step with the same large model may work at low volume but become expensive and difficult to recover when individual steps fail. A modular design routes simple work to deterministic functions or small language models (SLMs), escalates genuinely complex cases to an LLM, and scales the busy components independently.</p>
+  <p>Scalability must therefore be evaluated end to end. Adding inference replicas may increase token throughput without increasing completed workflows if a slow external API, shared database, or agent coordination step remains the bottleneck.</p>
+</section>
+
+<section id="architecture-of-scalable-ai-agents" class="article-section">
+  <h2>Architecture of Scalable AI Agents</h2>
+  <p>A practical architecture separates request intake, task orchestration, model inference, memory, tool access, and validation. This separation makes it possible to change the model used for one task without rebuilding the entire application.</p>
+  <figure class="agent-architecture" style="margin:1.5rem 0;">
+    <img src="images/scalable-ai-agents-architecture.png" alt="Scalable AI agents architecture with API gateway, orchestrator, specialized SLM workers, LLM escalation, shared memory, RAG, tools, and observability" 
+		title="scalable ai agents" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"
+	>
+    <figcaption>Global architecture for scalable agent systems: orchestration, parallel SLM workers, selective LLM escalation, shared memory, tools, and observability.</figcaption>
+  </figure>
+  <p>The <strong>API gateway</strong> manages incoming requests and safeguards shared resources. The <strong>queue</strong> absorbs bursts so the system does not have to process every request immediately. The <strong>orchestrator</strong> tracks which steps are ready, dispatches them to the appropriate workers, and decides when to retry, stop, or escalate. <strong>Model workers</strong> run inference; <strong>tool workers</strong> interact with external systems. A <strong>state store</strong> records durable progress, while observability captures latency, failures, and resource consumption.</p>
+  <p>In this architecture, an LLM is a component rather than the entire application. A small intent classifier might route a request, a retrieval component might fetch relevant project documents, and a larger model might synthesize a final answer only when needed. Strict validation should check output schemas and tool parameters before any side effect occurs.</p>
+</section>
+
+<section id="horizontal-scaling-and-agent-orchestration" class="article-section">
+  <h2>Horizontal Scaling and Agent Orchestration</h2>
+  <p>Horizontal scaling means adding more workers instead of relying on a single increasingly powerful machine. For AI agents, this is easiest when workers are <strong>stateless</strong>: they receive a task and a reference to its context, process it, and write results to durable storage. The worker can then be replaced or replicated without losing the conversation or workflow.</p>
+  <p>A queue-based orchestrator can assign classification jobs to inexpensive SLM instances, retrieval jobs to search workers, and complex reasoning jobs to a smaller pool of LLM instances. These pools can scale separately according to demand. For example, an increase in document extraction traffic should not automatically require more high-cost reasoning instances.</p>
+  <p>Not every workflow step can run in parallel. Independent searches and validations may execute concurrently, but a final synthesis task must wait for the required results. A dependency graph helps the orchestrator distinguish safe concurrency from steps that must be serialized. Timeouts, bounded retries, idempotency keys, and dead-letter handling protect the system against repeated side effects and endless retry loops.</p>
+  <p>Scaling agent counts without controlling coordination can make performance worse. Too many agents may compete for the same inference GPU, overwhelm an external tool, or spend tokens exchanging intermediate messages. Use explicit task boundaries, concurrency limits, backpressure, and measurable completion criteria rather than increasing the number of agents by default.</p>
+</section>
+
+<section id="slm-vs-llm-for-agent-scalability" class="article-section">
+  <h2>SLM vs LLM for Agent Scalability</h2>
+  <p>Choosing between an SLM and an LLM is a routing decision, not a contest to find one universally better model. The most scalable architecture uses the <strong>smallest model that meets the task's quality and reliability requirements</strong>, with a clearly defined escalation path for difficult requests.</p>
+  <div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;margin:1rem 0"><thead><tr><th style="text-align:left;padding:.7rem;border-bottom:2px solid #d9e1ea">Workload</th><th style="text-align:left;padding:.7rem;border-bottom:2px solid #d9e1ea">Typical first choice</th><th style="text-align:left;padding:.7rem;border-bottom:2px solid #d9e1ea">Reason</th></tr></thead><tbody>
+    <tr><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">Intent classification</td><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">SLM or classifier</td><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">Small, bounded label space</td></tr>
+    <tr><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">Structured field extraction</td><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">SLM + schema validation</td><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">Predictable output contract</td></tr>
+    <tr><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">Complex task planning</td><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">LLM</td><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">Broad reasoning and ambiguity</td></tr>
+    <tr><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">Routine tool argument generation</td><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">SLM when validated</td><td style="padding:.7rem;border-bottom:1px solid #e6ebf0">Repeatable tool schemas</td></tr>
+    <tr><td style="padding:.7rem">Cross-document synthesis</td><td style="padding:.7rem">LLM + retrieval</td><td style="padding:.7rem">Longer-range integration</td></tr>
+  </tbody></table></div>
+  <p>These are starting points, not guarantees: an SLM may fail at a narrow task if the input distribution is unfamiliar, and an LLM may be necessary for high-stakes extraction. Route by measured performance on representative examples, not parameter count alone. A useful design includes a confidence or validation gate, a fallback model, and monitoring of escalation rates.</p>
+  <p>SLMs can improve agent scalability by lowering memory requirements and inference costs, increasing the number of affordable replicas, and keeping routine workflows responsive. But smaller models do not automatically improve accuracy or reliability; those properties must be established through evaluation.</p>
+</section>
+
+<section id="memory-state-management-and-rag" class="article-section">
+  <h2>Memory, State Management and RAG</h2>
+  <p>Agent memory is often discussed as if it were a single vector database. In practice, scalable systems distinguish at least three kinds of information: <strong>workflow state</strong> (what the agent is doing now), <strong>conversation memory</strong> (what it should remember about prior interactions), and <strong>external knowledge</strong> (documents or facts retrieved to answer the current request).</p>
+  <p>Workflow state belongs in durable storage with task identifiers, status transitions, tool results, and recovery checkpoints. This lets a worker resume after a restart without replaying the entire conversation. Conversation memory should contain relevant, carefully selected summaries or structured facts rather than an unbounded transcript appended to every prompt.</p>
+  <p><strong>Retrieval-augmented generation (RAG)</strong> supplies task-relevant external information at inference time. A retrieval pipeline may use keyword search, embeddings, metadata filters, or a combination of these techniques. Retrieved passages should be associated with their source and version, and the agent should distinguish retrieved evidence from its own instructions.</p>
+  <p>For structured enterprise domains, a normalized knowledge model can complement document retrieval. Instead of treating every document as an isolated text chunk, the system may extract entities, relationships, requirements, and traceability links. Retrieval can then start from this structured representation and fetch original passages as supporting evidence. This reduces repeated interpretation and supports more consistent multi-agent workflows.</p>
+  <p>Security is part of memory design: apply access controls before retrieval, avoid mixing information between tenants, and treat external documents and tool responses as untrusted input. A large context window does not replace sound state management, retrieval quality, or authorization.</p>
+</section>
+
+<section id="performance-latency-and-cost" class="article-section">
+  <h2>Performance, Latency and Cost</h2>
+  <p>A scalable AI agent should be evaluated by <strong>completed and correct workflows</strong>, not only by model tokens per second. Token throughput matters for inference capacity, but users experience the combined delay of routing, retrieval, model generation, tool execution, and validation.</p>
+  <p>Start with a small measurement framework: <strong>p50 and p95 end-to-end latency</strong>, successful workflows per minute, task success rate, timeout and retry rates, average tokens per workflow, model escalation rate, GPU utilization, and cost per successfully completed workflow. Measure these under realistic concurrency and burst patterns, not just one request at a time.</p>
+  <p>A practical cost model is: <code>cost per successful workflow = total model + tool + infrastructure cost / number of successful workflows</code>. The denominator matters. A cheaper model that frequently produces invalid outputs or triggers retries may be more expensive in the end than a stronger model with higher first-pass success.</p>
+  <p>When benchmarking architectures, compare at equal quality targets. For example, measure an LLM-only workflow against a hybrid design using SLM classification, cached retrieval, and LLM escalation. Record the share of tasks that each path handles, the latency distribution, and the final validation pass rate. There is no universal percentage of cost reduction: savings depend on workload mix, hardware, batching, model choice, and the overhead of orchestration.</p>
+  <p>The strongest scalable design is not the one with the most agents or the smallest possible model. It is the design that can explain, measure, and continuously improve the tradeoff between <strong>quality, latency, reliability, and cost</strong>.</p>
+</section>
+<!-- END AITETIC expansion -->
+
+
 <h4>Conclusion</h4>
+
+  <figure class="agent-architecture" style="margin:1.5rem 0;">
+    <img src="images/scalable-ai-agents-reference-architecture.png" 
+		alt="Scalable AI agents architecture with API gateway, orchestrator, specialized SLM workers, LLM escalation, shared memory, RAG, tools, and observability" 
+		title="scalable ai agentic architecture" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:10px;"
+	>
+    <figcaption>Reference architecture for scalable agent systems: orchestration, parallel SLM workers, selective LLM escalation, shared memory, tools, and observability.</figcaption>
+  </figure>
 
 <p>The next phase of practical AI will not be defined only by larger models. It will also be shaped by smaller ones that are fast, specialized, and deployable in far more places. SLMs make AI systems more modular, more affordable, and often more reliable for routine workflows. Large models remain important, but they no longer need to carry every part of the stack.</p>
 
